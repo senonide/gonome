@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Gonome
+Comment=Simple hello world app written in go and distributed as a flatpak
+Exec=gonome
+Icon=org.senonide.gonome
+Terminal=false
+Type=Application
+Categories=Utility;
+Keywords=GTK;
+StartupNotify=true

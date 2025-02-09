@@ -1,0 +1,38 @@
+id: org.senonide.gonome
+runtime: org.gnome.Platform
+runtime-version: "47"
+sdk: org.gnome.Sdk
+command: gonome
+finish-args:
+  - --share=network
+  - --share=ipc
+  - --socket=fallback-x11
+  - --device=dri
+  - --socket=wayland
+  - --socket=session-bus
+  - --own-name=org.senonide.gonome
+modules:
+  - name: gonome
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 gonome /app/bin/gonome
+      - install -Dm644 org.senonide.gonome.desktop /app/share/applications/org.senonide.gonome.desktop
+      - install -Dm644 org.senonide.gonome.metainfo.xml /app/share/metainfo/org.senonide.gonome.metainfo.xml
+      - install -Dm644 org.senonide.gonome.service /app/share/dbus-1/services/org.senonide.gonome.service
+      - install -Dm644 org.senonide.gonome.svg /app/share/icons/hicolor/scalable/apps/org.senonide.gonome.svg
+    sources:
+      - type: file
+        path: ./src/target/bin/hello
+        dest-filename: gonome
+      - type: file
+        path: ./data/org.senonide.gonome.desktop
+        dest-filename: org.senonide.gonome.desktop
+      - type: file
+        path: ./data/org.senonide.gonome.metainfo.xml
+        dest-filename: org.senonide.gonome.metainfo.xml
+      - type: file
+        path: ./data/org.senonide.gonome.service
+        dest-filename: org.senonide.gonome.service
+      - type: file
+        path: ./data/icons/hicolor/scalable/apps/org.senonide.gonome.svg
+        dest-filename: org.senonide.gonome.svg
